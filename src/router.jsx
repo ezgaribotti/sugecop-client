@@ -7,8 +7,6 @@ import Dashboard from './views/dashboard.jsx'
 import OperatorProfile from './views/operator-profile.jsx'
 import AuthMiddleware from './views/auth-middleware.jsx'
 
-export const admin = path => webRoutes.admin + path
-
 const router = createBrowserRouter([
     {
         path: webRoutes.home,
@@ -24,11 +22,11 @@ const router = createBrowserRouter([
         element: <AuthMiddleware/>,
         children: [
             {
-                path: admin(webRoutes.dashboard),
+                path: webRoutes.dashboard,
                 element: <Dashboard/>
             },
             {
-                path: admin(webRoutes.operatorProfile),
+                path: webRoutes.operatorProfile,
                 element: <OperatorProfile/>
             }
         ]

@@ -6,7 +6,6 @@ import { login } from '../app/features/auth.js'
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { admin } from '../router.jsx'
 
 function Login() {
     const dispatch = useDispatch()
@@ -28,7 +27,7 @@ function Login() {
         event.preventDefault()
         fetcher.post(apiRoutes.login, credential).then(response => {
             dispatch(login(response.data.data))
-            navigate(admin(webRoutes.dashboard))
+            navigate(webRoutes.dashboard)
         }).catch(error => toast.error(error.response.data.message))
     }
 
