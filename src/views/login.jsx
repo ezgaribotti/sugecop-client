@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import webRoutes from '../routes/web.js'
 import apiRoutes from '../routes/api.js'
-import fetcher from '../config/fetcher.js'
+import fetcher, { exception } from '../config/fetcher.js'
 import { login } from '../app/features/auth.js'
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
@@ -27,8 +27,8 @@ function Login() {
         event.preventDefault()
         fetcher.post(apiRoutes.login, credential).then(response => {
             dispatch(login(response.data.data))
-            navigate(webRoutes.dashboard)
-        }).catch(error => toast.error(error.response.data.message))
+            return navigate(webRoutes.dashboard)
+        }).catch(error => toast.error(exception(error)))
     }
 
     return (

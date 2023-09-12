@@ -10,8 +10,7 @@ import AuthMiddleware from './views/auth-middleware.jsx'
 const router = createBrowserRouter([
     {
         path: webRoutes.home,
-        element: <Home/>,
-        errorElement: <ErrorPage/>
+        element: <Home/>
     },
     {
         path: webRoutes.login,
@@ -20,6 +19,7 @@ const router = createBrowserRouter([
     {
         path: webRoutes.admin,
         element: <AuthMiddleware/>,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 path: webRoutes.dashboard,
