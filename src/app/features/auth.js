@@ -14,7 +14,7 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         login: (state, action) => {
-            state.accessToken = action.payload.access_token
+            state.accessToken = 'Bearer ' + action.payload.access_token
             state.operator.id = action.payload.operator.id
             state.operator.fullName = action.payload.operator.full_name
             state.isAuth = true

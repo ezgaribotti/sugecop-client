@@ -1,5 +1,6 @@
 const apiRoutes = {
-    login: '/login'
+    login: '/login',
+    operatorProfile: '/operator-profile'
 }
 
 export default apiRoutes

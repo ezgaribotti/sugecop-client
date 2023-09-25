@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import webRoutes from '../routes/web.js'
 import apiRoutes from '../routes/api.js'
-import fetcher from '../config/fetcher.js'
+import { exception, fetcher } from '../app/fetcher.js'
 import { login } from '../app/features/auth.js'
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { admin } from '../router.jsx'
+import { useTranslation } from 'react-i18next'
+import { map } from '../locales/map.js'
 
 function Login() {
+    const { t } = useTranslation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -28,17 +30,17 @@ function Login() {
         event.preventDefault()
         fetcher.post(apiRoutes.login, credential).then(response => {
             dispatch(login(response.data.data))
-            navigate(admin(webRoutes.dashboard))
-        }).catch(error => toast.error(error.response.data.message))
+            return navigate(webRoutes.dashboard)
+        }).catch(error => toast.error(exception(error)))
     }
 
     return (
         <div>
-            Iniciar sesión
+            {t(map.login)}
             <form onSubmit={handleSubmit}>
                 <input type="text" name="username" onChange={handleChange}/>
                 <input type="password" name="password" onChange={handleChange}/>
-                <button type="submit">Acceder</button>
+                <button type="submit">{t(map.ok)}</button>
             </form>
         </div>
     )

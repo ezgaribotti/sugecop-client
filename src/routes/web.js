@@ -1,7 +1,7 @@
 const webRoutes = {
     home: '/',
+    welcome: '/welcome',
     login: '/login',
-    admin: '/admin',
     dashboard: '/dashboard',
     operatorProfile: '/operator-profile'
 }

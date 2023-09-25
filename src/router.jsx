@@ -1,35 +1,45 @@
 import { createBrowserRouter } from 'react-router-dom'
 import webRoutes from './routes/web.js'
-import Home from './views/home.jsx'
+import Auth from './views/auth.jsx'
+import Launch from './views/launch.jsx'
+import Dashboard from './views/dashboard.jsx'
+import Welcome from './views/welcome.jsx'
 import ErrorPage from './views/error-page.jsx'
 import Login from './views/login.jsx'
-import Dashboard from './views/dashboard.jsx'
+import Home from './views/home.jsx'
 import OperatorProfile from './views/operator-profile.jsx'
-import AuthMiddleware from './views/auth-middleware.jsx'
-
-export const admin = path => webRoutes.admin + path
 
 const router = createBrowserRouter([
     {
-        path: webRoutes.home,
-        element: <Home/>,
-        errorElement: <ErrorPage/>
+        path: webRoutes.welcome,
+        element: <Welcome/>
     },
     {
-        path: webRoutes.login,
-        element: <Login/>
-    },
-    {
-        path: webRoutes.admin,
-        element: <AuthMiddleware/>,
+        element: <Launch/>,
         children: [
             {
-                path: admin(webRoutes.dashboard),
-                element: <Dashboard/>
-            },
+                path: webRoutes.login,
+                element: <Login/>
+            }
+        ]
+    },
+    {
+        path: webRoutes.home,
+        element: <Auth/>,
+        errorElement: <ErrorPage/>,
+        children: [
             {
-                path: admin(webRoutes.operatorProfile),
-                element: <OperatorProfile/>
+                element: <Dashboard/>,
+                children: [
+                    {
+                        path: webRoutes.dashboard,
+                        element: <Home/>
+                    },
+                    {
+                        path: webRoutes.operatorProfile,
+                        element: <OperatorProfile/>
+                    }
+                ]
             }
         ]
     }
