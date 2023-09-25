@@ -5,10 +5,10 @@ import webRoutes from '../routes/web.js'
 import apiRoutes from '../routes/api.js'
 import { toast } from 'react-toastify'
 import useSWR from 'swr'
-import fetcher, { exception } from '../config/fetcher.js'
+import { fetcher, exception } from '../app/fetcher.js'
 import { logout } from '../app/features/auth.js'
 
-function AuthMiddleware() {
+function Auth() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [mounted, setMounted] = useState(false)
@@ -26,12 +26,7 @@ function AuthMiddleware() {
         setMounted(true)
     }, [error])
 
-    return (
-        <div>
-            Acceso exitoso
-            <Outlet/>
-        </div>
-    )
+    return <Outlet/>
 }
 
-export default AuthMiddleware
+export default Auth

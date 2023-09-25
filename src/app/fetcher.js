@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const instance = axios.create({
+export const fetcher = axios.create({
     baseURL: import.meta.env.VITE_FETCHER_BASE_URL,
     timeout: 5000,
     headers: {
@@ -16,7 +16,5 @@ export const exception = error => {
 }
 
 export const options = {
-    fetcher: url => instance.get(url).then(response => response.data)
+    fetcher: url => fetcher.get(url).then(response => response.data)
 }
-
-export default instance
