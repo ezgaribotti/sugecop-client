@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { map } from '../locales/map.js'
+import { translationMap } from '../locales/map.js'
 
 function Login() {
     const { t } = useTranslation()
@@ -36,11 +36,11 @@ function Login() {
 
     return (
         <div>
-            {t(map.login)}
+            {t(translationMap.login)}
             <form onSubmit={handleSubmit}>
                 <input type="text" name="username" onChange={handleChange}/>
                 <input type="password" name="password" onChange={handleChange}/>
-                <button type="submit">{t(map.ok)}</button>
+                <button type="submit">{t(translationMap.ok)}</button>
             </form>
         </div>
     )

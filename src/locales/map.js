@@ -1,4 +1,4 @@
-export const map = {
+export const translationMap = {
     ok: 'ok',
     login: 'login',
     logout: 'logout',

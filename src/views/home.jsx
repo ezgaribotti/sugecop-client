@@ -3,7 +3,7 @@ import webRoutes from '../routes/web.js'
 import { useDispatch } from 'react-redux'
 import { logout } from '../app/features/auth.js'
 import { useTranslation } from 'react-i18next'
-import { map } from '../locales/map.js'
+import { translationMap } from '../locales/map.js'
 
 function Home() {
     const { t } = useTranslation()
@@ -17,8 +17,8 @@ function Home() {
 
     return (
         <div>
-            <Link to={webRoutes.operatorProfile}>{t(map.operatorProfile)}</Link>
-            <button onClick={clearAuth}>{t(map.logout)}</button>
+            <Link to={webRoutes.operatorProfile}>{t(translationMap.operatorProfile)}</Link>
+            <button onClick={clearAuth}>{t(translationMap.logout)}</button>
         </div>
     )
 }
